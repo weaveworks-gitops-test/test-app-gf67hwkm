@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-p38wkb
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-p38wkb
+  namespace: my-nginx-p38wkb
+  labels:
+    name: nginx-p38wkb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-p38wkb
+  template:
+    metadata:
+      namespace: my-nginx-p38wkb
+      labels:
+        name: nginx-p38wkb
+    spec:
+      containers:
+      - name: nginx-p38wkb
+        image: nginx
+        ports:
+        - containerPort: 80
+
